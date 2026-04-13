@@ -19,158 +19,312 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+        }
+
+        /* Decorative floral background */
+        body::before {
+            content: "✿";
+            font-size: 200px;
+            color: rgba(210, 105, 30, 0.03);
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            transform: rotate(-15deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "✿";
+            font-size: 150px;
+            color: rgba(139, 69, 19, 0.03);
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: rotate(15deg);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .invitation-card {
             max-width: 650px;
             width: 100%;
-            background: white;
-            border-radius: 32px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .invitation-card:hover {
-            transform: scale(1.01);
+            transform: translateY(-8px);
+            box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Decorative border inside */
+        .invitation-card::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(210, 105, 30, 0.2);
+            border-radius: 40px;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* PHOTO IN THE MIDDLE BACKGROUND */
+        .photo-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 75%;
+            height: auto;
+            z-index: 0;
+            opacity: 0.25;
+            pointer-events: none;
+            border-radius: 30px;
+            filter: blur(1px);
         }
 
         .hero {
-            background: linear-gradient(135deg, #8B4513, #D2691E);
-            padding: 40px 20px 30px;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(210, 105, 30, 0.9));
+            padding: 50px 20px 40px;
             color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero::after {
+            content: "✦ ✦ ✦";
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            font-size: 12px;
+            letter-spacing: 8px;
+            opacity: 0.5;
         }
 
         .hero h3 {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            letter-spacing: 5px;
             font-weight: 300;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin: 10px 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 400;
             margin: 15px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         .hero .amp {
-            font-size: 2rem;
-            font-family: serif;
+            font-size: 2.2rem;
+            font-family: 'Times New Roman', serif;
             margin: 0 10px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .hero p {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 45px 35px 50px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(3px);
+            position: relative;
+            z-index: 2;
         }
 
         .detail {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            position: relative;
         }
 
         .detail h4 {
-            color: #8B4513;
-            font-size: 1.1rem;
+            color: #D2691E;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             margin-bottom: 12px;
+            font-weight: 600;
         }
 
         .detail p {
-            font-size: 1.2rem;
-            color: #333;
+            font-size: 1.3rem;
+            color: #2c1810;
             font-weight: 500;
         }
 
         .detail .date {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #D2691E;
+            color: #8B4513;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .location-box {
-            background: #fef3e4;
-            padding: 20px;
-            border-radius: 20px;
+            background: rgba(254, 247, 237, 0.9);
+            padding: 25px;
+            border-radius: 28px;
             margin: 20px 0;
+            border: 1px solid rgba(210, 105, 30, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         .location-box p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #5a3a22;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4a2a15;
+            font-weight: 500;
         }
 
         .rsvp-section {
-            margin-top: 35px;
-            padding-top: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
             border-top: 2px dashed #e0c8b0;
+            background: rgba(254, 250, 245, 0.9);
+            margin-left: -35px;
+            margin-right: -35px;
+            padding-left: 35px;
+            padding-right: 35px;
+            border-radius: 0 0 48px 48px;
         }
 
         .rsvp-section h4 {
             color: #8B4513;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .rsvp-section p {
+            font-size: 1.1rem;
+            color: #5a3a22;
+            font-style: italic;
         }
 
         .rsvp-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 30px 0 20px;
         }
 
         .rsvp-btn {
-            background: #D2691E;
+            background: linear-gradient(135deg, #D2691E, #B85C1A);
             color: white;
             border: none;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
         }
 
         .rsvp-btn:hover {
-            background: #8B4513;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
         }
 
         .contact {
-            font-size: 0.9rem;
-            color: #777;
+            font-size: 1rem;
+            color: #8B4513;
             margin-top: 20px;
+            font-weight: 500;
+            background: rgba(210, 105, 30, 0.1);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 40px;
         }
 
         .footer {
-            background: #f9e7d2;
-            padding: 20px;
-            font-size: 0.85rem;
+            background: linear-gradient(135deg, rgba(249, 231, 210, 0.95), rgba(245, 223, 196, 0.95));
+            padding: 30px 25px;
+            font-size: 1rem;
+            color: #5a3a22;
+            border-top: 1px solid rgba(210, 105, 30, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer p:first-child {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
             color: #8B4513;
+        }
+
+        .footer p:last-child {
+            font-style: italic;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 500px) {
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .hero h2 {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             .detail p {
                 font-size: 1rem;
             }
             .detail .date {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            .rsvp-section {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .location-box p {
+                font-size: 0.95rem;
+            }
+            .photo-background {
+                width: 85%;
             }
         }
     </style>
@@ -178,6 +332,11 @@
 <body>
 
 <div class="invitation-card">
+    
+    <!-- PHOTO IN THE MIDDLE BACKGROUND -->
+    <!-- Replace 'your-photo.jpg' with your actual photo file name -->
+    <img src="wedding-photo.jpg" alt="Bekalu & Bikiltu" class="photo-background" id="middlePhoto">
+    
     <div class="hero">
         <h3>AMAAMOTAAF</h3>
         <h1>Bekalu Kefyalew</h1>
@@ -210,7 +369,6 @@
             <p>Sin Jaalana</p>
             <div class="rsvp-buttons">
                 <a href="tel:+251 98 475 3683" class="rsvp-btn">📞 Call</a>
-               
             </div>
             <div class="contact">
                 📱 +251 98 475 3683
@@ -219,10 +377,10 @@
     </div>
 
     <div class="footer">
-        <p>🎉 Macaafa Lallabaa 4:9🎉</p>
-        <p style="margin-top: 8px;"><p>...Wanti lama ta'anii itti dadhabanii hojjetan</p>
-<p>gatii gaarii waan qabuuf,</p>
-<p>lama ta'uun kophaa ta'uu irra in wayya;</p>
+        <p>🎉 Macaafa Lallabaa 4:9 🎉</p>
+        <p>...Wanti lama ta'anii itti dadhabanii hojjetan<br>
+        gatii gaarii waan qabuuf,<br>
+        lama ta'uun kophaa ta'uu irra in wayya;</p>
     </div>
 </div>
 
