@@ -13,90 +13,49 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fdf8f0 0%, #f9e7d2 100%);
+            background: #2c1810;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative;
-        }
-
-        /* Decorative floral background */
-        body::before {
-            content: "✿";
-            font-size: 200px;
-            color: rgba(210, 105, 30, 0.03);
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            transform: rotate(-15deg);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: "✿";
-            font-size: 150px;
-            color: rgba(139, 69, 19, 0.03);
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: rotate(15deg);
-            pointer-events: none;
-            z-index: 0;
         }
 
         .invitation-card {
             max-width: 650px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(2px);
             border-radius: 48px;
             overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
             text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
-            z-index: 2;
         }
 
-        .invitation-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Decorative border inside */
-        .invitation-card::before {
-            content: "";
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid rgba(210, 105, 30, 0.2);
-            border-radius: 40px;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        /* PHOTO IN THE MIDDLE BACKGROUND */
+        /* CLEAR VISIBLE PHOTO BACKGROUND */
         .photo-background {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 75%;
-            height: auto;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: 0;
-            opacity: 0.25;
-            pointer-events: none;
-            border-radius: 30px;
-            filter: blur(1px);
+        }
+
+        /* Dark overlay to make text readable */
+        .invitation-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(210, 105, 30, 0.9));
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.85), rgba(210, 105, 30, 0.85));
             padding: 50px 20px 40px;
             color: white;
             position: relative;
@@ -111,7 +70,7 @@
             right: 0;
             font-size: 12px;
             letter-spacing: 8px;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .hero h3 {
@@ -127,14 +86,14 @@
             font-weight: 700;
             margin: 10px 0;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero h2 {
             font-size: 2rem;
             font-weight: 400;
             margin: 15px 0;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         .hero .amp {
@@ -158,8 +117,8 @@
 
         .content {
             padding: 45px 35px 50px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(3px);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(2px);
             position: relative;
             z-index: 2;
         }
@@ -199,8 +158,8 @@
             padding: 25px;
             border-radius: 28px;
             margin: 20px 0;
-            border: 1px solid rgba(210, 105, 30, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(210, 105, 30, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .location-box p {
@@ -255,13 +214,13 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
         }
 
         .rsvp-btn:hover {
             background: linear-gradient(135deg, #8B4513, #A0522D);
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
         }
 
         .contact {
@@ -269,7 +228,7 @@
             color: #8B4513;
             margin-top: 20px;
             font-weight: 500;
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(210, 105, 30, 0.15);
             display: inline-block;
             padding: 8px 24px;
             border-radius: 40px;
@@ -280,7 +239,7 @@
             padding: 30px 25px;
             font-size: 1rem;
             color: #5a3a22;
-            border-top: 1px solid rgba(210, 105, 30, 0.15);
+            border-top: 1px solid rgba(210, 105, 30, 0.2);
             position: relative;
             z-index: 2;
         }
@@ -323,9 +282,6 @@
             .location-box p {
                 font-size: 0.95rem;
             }
-            .photo-background {
-                width: 85%;
-            }
         }
     </style>
 </head>
@@ -333,9 +289,8 @@
 
 <div class="invitation-card">
     
-    <!-- PHOTO IN THE MIDDLE BACKGROUND -->
-    <!-- Replace 'your-photo.jpg' with your actual photo file name -->
-    <img src="wedding-photo.jpg" alt="Bekalu & Bikiltu" class="photo-background" id="middlePhoto">
+    <!-- CLEAR VISIBLE PHOTO - Replace 'your-photo.jpg' with your actual photo file name -->
+    <img src="wedding-photo.jpg" alt="Bekalu & Bikiltu" class="photo-background">
     
     <div class="hero">
         <h3>AMAAMOTAAF</h3>
@@ -368,7 +323,7 @@
             <h4>💌 Galatoomaa</h4>
             <p>Sin Jaalana</p>
             <div class="rsvp-buttons">
-                <a href="tel:+251 98 475 3683" class="rsvp-btn">📞 Call</a>
+                <a href="tel:+251984753683" class="rsvp-btn">📞 Call</a>
             </div>
             <div class="contact">
                 📱 +251 98 475 3683
