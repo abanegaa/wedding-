@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #2c1810;
+            background: linear-gradient(135deg, #fdf8f0 0%, #f9e7d2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,110 +22,94 @@
         }
 
         .invitation-card {
-            max-width: 650px;
+            max-width: 750px;
             width: 100%;
+            background: white;
             border-radius: 48px;
             overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            position: relative;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        /* CLEAR VISIBLE PHOTO BACKGROUND */
-        .photo-background {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .invitation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* NEW LAYOUT: Photo + Names Side by Side */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .photo-frame {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: #f5e6d3;
+        }
+
+        .photo-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 0;
         }
 
-        /* Dark overlay to make text readable */
-        .invitation-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.85), rgba(210, 105, 30, 0.85));
-            padding: 50px 20px 40px;
+        .names {
+            text-align: center;
             color: white;
-            position: relative;
-            z-index: 2;
         }
 
-        .hero::after {
-            content: "✦ ✦ ✦";
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            font-size: 12px;
-            letter-spacing: 8px;
-            opacity: 0.6;
-        }
-
-        .hero h3 {
+        .names h3 {
             font-size: 1rem;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             font-weight: 300;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
-        .hero h1 {
-            font-size: 2.8rem;
+        .names h1 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin: 10px 0;
+            margin: 5px 0;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero h2 {
+        .names .amp {
+            font-size: 2rem;
+            font-family: 'Times New Roman', serif;
+            margin: 0 5px;
+        }
+
+        .names h2 {
             font-size: 2rem;
             font-weight: 400;
-            margin: 15px 0;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            margin: 5px 0;
         }
 
-        .hero .amp {
-            font-size: 2.2rem;
-            font-family: 'Times New Roman', serif;
-            margin: 0 10px;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
-
-        .hero p {
-            font-size: 1rem;
-            font-weight: 300;
+        .names p {
+            font-size: 0.95rem;
+            margin-top: 12px;
+            opacity: 0.9;
             letter-spacing: 1px;
         }
 
         .content {
-            padding: 45px 35px 50px;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(2px);
-            position: relative;
-            z-index: 2;
+            padding: 40px 35px;
         }
 
         .detail {
-            margin-bottom: 35px;
-            position: relative;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .detail h4 {
@@ -133,7 +117,7 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
@@ -146,7 +130,6 @@
         .detail .date {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #8B4513;
             background: linear-gradient(135deg, #8B4513, #D2691E);
             background-clip: text;
             -webkit-background-clip: text;
@@ -154,37 +137,33 @@
         }
 
         .location-box {
-            background: rgba(254, 247, 237, 0.9);
-            padding: 25px;
+            background: linear-gradient(135deg, #fef7ed, #fff8f0);
+            padding: 20px 25px;
             border-radius: 28px;
-            margin: 20px 0;
-            border: 1px solid rgba(210, 105, 30, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            border: 1px solid rgba(210, 105, 30, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
 
         .location-box p {
             font-size: 1.1rem;
-            line-height: 1.7;
+            line-height: 1.6;
             color: #4a2a15;
             font-weight: 500;
         }
 
         .rsvp-section {
-            margin-top: 40px;
-            padding-top: 30px;
+            margin-top: 35px;
+            padding-top: 25px;
             border-top: 2px dashed #e0c8b0;
-            background: rgba(254, 250, 245, 0.9);
-            margin-left: -35px;
-            margin-right: -35px;
-            padding-left: 35px;
-            padding-right: 35px;
-            border-radius: 0 0 48px 48px;
+            text-align: center;
         }
 
         .rsvp-section h4 {
             color: #8B4513;
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
@@ -199,69 +178,72 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin: 30px 0 20px;
+            margin: 25px 0 15px;
         }
 
         .rsvp-btn {
             background: linear-gradient(135deg, #D2691E, #B85C1A);
             color: white;
             border: none;
-            padding: 14px 32px;
+            padding: 12px 30px;
             border-radius: 60px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
         }
 
         .rsvp-btn:hover {
             background: linear-gradient(135deg, #8B4513, #A0522D);
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
         }
 
         .contact {
             font-size: 1rem;
             color: #8B4513;
-            margin-top: 20px;
+            margin-top: 15px;
             font-weight: 500;
-            background: rgba(210, 105, 30, 0.15);
+            background: rgba(210, 105, 30, 0.1);
             display: inline-block;
-            padding: 8px 24px;
+            padding: 6px 20px;
             border-radius: 40px;
         }
 
         .footer {
-            background: linear-gradient(135deg, rgba(249, 231, 210, 0.95), rgba(245, 223, 196, 0.95));
-            padding: 30px 25px;
+            background: linear-gradient(135deg, #f9e7d2, #f5dfc4);
+            padding: 25px;
+            text-align: center;
             font-size: 1rem;
             color: #5a3a22;
-            border-top: 1px solid rgba(210, 105, 30, 0.2);
-            position: relative;
-            z-index: 2;
+            border-top: 1px solid rgba(210, 105, 30, 0.15);
         }
 
         .footer p:first-child {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #8B4513;
         }
 
         .footer p:last-child {
             font-style: italic;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 500px) {
-            .hero h1 {
-                font-size: 2rem;
+        @media (max-width: 550px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
             }
-            .hero h2 {
+            .names h1 {
+                font-size: 1.8rem;
+            }
+            .names h2 {
                 font-size: 1.5rem;
             }
             .detail p {
@@ -273,12 +255,6 @@
             .content {
                 padding: 30px 20px;
             }
-            .rsvp-section {
-                margin-left: -20px;
-                margin-right: -20px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
             .location-box p {
                 font-size: 0.95rem;
             }
@@ -289,15 +265,18 @@
 
 <div class="invitation-card">
     
-    <!-- CLEAR VISIBLE PHOTO - Replace 'your-photo.jpg' with your actual photo file name -->
-    <img src="wedding-photo.jpg" alt="Bekalu & Bikiltu" class="photo-background">
-    
-    <div class="hero">
-        <h3>AMAAMOTAAF</h3>
-        <h1>Bekalu Kefyalew</h1>
-        <div class="amp">&amp;</div>
-        <h2>Bikiltu Dagne</h2>
-        <p style="margin-top: 15px; opacity: 0.9;">Cidha Kenya Waliin Hakabajnu</p>
+    <!-- NEW LAYOUT: Photo Beside Names -->
+    <div class="hero-section">
+        <div class="photo-frame">
+            <img src="wedding-photo.jpg" alt="Bekalu & Bikiltu">
+        </div>
+        <div class="names">
+            <h3>AMAAMOTAAF</h3>
+            <h1>Bekalu Kefyalew</h1>
+            <div class="amp">&amp;</div>
+            <h2>Bikiltu Dagne</h2>
+            <p>Cidha Kenya Waliin Hakabajnu</p>
+        </div>
     </div>
 
     <div class="content">
